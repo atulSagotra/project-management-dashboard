@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 export type Task = {
   id: string;
   title: string;
   description: string;
-  priority: "High" | "Low";
+  priority: 'High' | 'Low';
 };
 
 export type Lane = {
@@ -15,32 +15,61 @@ export type Lane = {
 
 type KanbanContextType = {
   lanes: Lane[];
-  moveTask: (srcLaneId: string, destLaneId: string, srcIdx: number, destIdx: number) => void;
+  moveTask: (
+    srcLaneId: string,
+    destLaneId: string,
+    srcIdx: number,
+    destIdx: number,
+  ) => void;
+  addTask: (
+    laneId: string,
+    title: string,
+    description?: string,
+    priority?: 'High' | 'Low',
+  ) => void;
 };
 
-const initialKanban: Lane[] = [
+const initialLanes: Lane[] = [
   {
-    id: "todo",
-    title: "To Do",
+    id: 'todo',
+    title: 'To Do',
     tasks: [
-      { id: "task-1", title: "Brainstorming", description: "Collaborative idea generation with the team.", priority: "Low" },
-      { id: "task-2", title: "Research", description: "User research to inform product design", priority: "High" },
+      {
+        id: 'task-1',
+        title: 'Brainstorming',
+        description: 'Ideation with team',
+        priority: 'Low',
+      },
+      {
+        id: 'task-2',
+        title: 'Research',
+        description: 'User research for new project',
+        priority: 'High',
+      },
     ],
   },
   {
-    id: "progress",
-    title: "On Progress",
+    id: 'progress',
+    title: 'On Progress',
     tasks: [
-      { id: "task-3", title: "Onboarding Illustration", description: "Illustration for user onboarding flow", priority: "Low" },
-      { id: "task-4", title: "Moodboard", description: "Inspiration assets collection", priority: "Low" },
+      {
+        id: 'task-3',
+        title: 'UI Mockups',
+        description: 'Design screens in Figma',
+        priority: 'Low',
+      },
     ],
   },
   {
-    id: "done",
-    title: "Done",
+    id: 'done',
+    title: 'Done',
     tasks: [
-      { id: "task-5", title: "Mobile App Design", description: "Final UI completed", priority: "Low" },
-      { id: "task-6", title: "Design System", description: "Reusable components ready", priority: "Low" },
+      {
+        id: 'task-4',
+        title: 'Wireframes',
+        description: 'Basic wireframe completed',
+        priority: 'Low',
+      },
     ],
   },
 ];
@@ -48,25 +77,52 @@ const initialKanban: Lane[] = [
 const KanbanContext = createContext<KanbanContextType | undefined>(undefined);
 
 export const KanbanProvider = ({ children }: { children: ReactNode }) => {
-  const [lanes, setLanes] = useState<Lane[]>(initialKanban);
+  const [lanes, setLanes] = useState<Lane[]>(initialLanes);
 
-  const moveTask = (srcLaneId: string, destLaneId: string, srcIdx: number, destIdx: number) => {
-    setLanes(prev => {
-      const copy = JSON.parse(JSON.stringify(prev));
-      const srcLane = copy.find((l: Lane) => l.id === srcLaneId);
-      const destLane = copy.find((l: Lane) => l.id === destLaneId);
-      if (!srcLane || !destLane) return copy;
+  const moveTask = (
+    srcLaneId: string,
+    destLaneId: string,
+    srcIdx: number,
+    destIdx: number,
+  ) => {
+    setLanes((prev) => {
+      const copy = JSON.parse(JSON.stringify(prev)) as Lane[];
+      const srcLane = copy.find((l) => l.id === srcLaneId);
+      const destLane = copy.find((l) => l.id === destLaneId);
+      if (!srcLane || !destLane) return prev;
       const [moved] = srcLane.tasks.splice(srcIdx, 1);
       destLane.tasks.splice(destIdx, 0, moved);
       return copy;
     });
   };
 
-  return <KanbanContext.Provider value={{ lanes, moveTask }}>{children}</KanbanContext.Provider>;
+  const addTask = (
+    laneId: string,
+    title: string,
+    description = '',
+    subheading = '',
+    priority: 'High' | 'Low' = 'Low',
+  ) => {
+    setLanes((prev) => {
+      const copy = JSON.parse(JSON.stringify(prev)) as Lane[];
+      const lane = copy.find((l) => l.id === laneId);
+      if (!lane) return prev;
+      const newTaskId = `task-${Date.now()}`;
+      const newTask: Task = { id: newTaskId, title, description, priority };
+      lane.tasks.push(newTask);
+      return copy;
+    });
+  };
+
+  return (
+    <KanbanContext.Provider value={{ lanes, moveTask, addTask }}>
+      {children}
+    </KanbanContext.Provider>
+  );
 };
 
-export function useKanban() {
+export const useKanban = () => {
   const ctx = useContext(KanbanContext);
-  if (!ctx) throw new Error("useKanban must be used within KanbanProvider");
+  if (!ctx) throw new Error('useKanban must be used within KanbanProvider');
   return ctx;
-}
+};

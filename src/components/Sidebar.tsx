@@ -1,22 +1,28 @@
-import Image from "next/image";
+import Image from 'next/image';
 import {
-  FaHome, FaRegCommentDots, FaTasks, FaUserFriends, FaCog, FaPlus, FaLightbulb,
-} from "react-icons/fa";
-import { BsThreeDots } from "react-icons/bs";
+  FaHome,
+  FaRegCommentDots,
+  FaTasks,
+  FaUserFriends,
+  FaCog,
+  FaPlus,
+  FaLightbulb,
+} from 'react-icons/fa';
+import { BsThreeDots } from 'react-icons/bs';
 
 const navItems = [
-  { label: "Home", icon: <FaHome />, selected: false },
-  { label: "Messages", icon: <FaRegCommentDots /> },
-  { label: "Tasks", icon: <FaTasks /> },
-  { label: "Members", icon: <FaUserFriends /> },
-  { label: "Settings", icon: <FaCog /> },
+  { label: 'Home', icon: <FaHome />, selected: false },
+  { label: 'Messages', icon: <FaRegCommentDots /> },
+  { label: 'Tasks', icon: <FaTasks /> },
+  { label: 'Members', icon: <FaUserFriends /> },
+  { label: 'Settings', icon: <FaCog /> },
 ];
 
 const projects = [
-  { name: "Mobile App", color: "bg-green-500", selected: true },
-  { name: "Website Redesign", color: "bg-orange-400" },
-  { name: "Design System", color: "bg-purple-300" },
-  { name: "Wireframes", color: "bg-blue-400" },
+  { name: 'Mobile App', color: 'bg-green-500', selected: true },
+  { name: 'Website Redesign', color: 'bg-orange-400' },
+  { name: 'Design System', color: 'bg-purple-300' },
+  { name: 'Wireframes', color: 'bg-blue-400' },
 ];
 
 export default function Sidebar() {
@@ -43,24 +49,28 @@ export default function Sidebar() {
 
       {/* NAVIGATION */}
       <nav className="flex flex-col px-3 gap-1 pt-3">
-        {navItems.map((item) =>
+        {navItems.map((item) => (
           <button
             key={item.label}
             className={`
               group flex items-center gap-3 px-5 py-2 rounded-lg text-base font-medium relative transition
-              ${item.selected
-                ? "bg-[#F5F6FA] text-[#635DFF]"
-                : "text-gray-500 hover:bg-[#F5F6FA] hover:text-[#635DFF]"}
+              ${
+                item.selected
+                  ? 'bg-[#F5F6FA] text-[#635DFF]'
+                  : 'text-gray-500 hover:bg-[#F5F6FA] hover:text-[#635DFF]'
+              }
             `}
           >
             {/* Left purple bar bubble for selected nav */}
             {item.selected && (
               <span className="absolute left-0 h-6 w-1 rounded-r bg-primary" />
             )}
-            <span className="w-5 flex items-center justify-center z-10">{item.icon}</span>
+            <span className="w-5 flex items-center justify-center z-10">
+              {item.icon}
+            </span>
             <span className="ml-1">{item.label}</span>
           </button>
-        )}
+        ))}
       </nav>
 
       {/* Divider */}
@@ -83,8 +93,8 @@ export default function Sidebar() {
             <button
               className={`flex items-center justify-between px-4 py-2 rounded-lg w-full group ${
                 selected
-                  ? "bg-[#F5F6FA] font-semibold text-gray-900"
-                  : "text-gray-600 hover:bg-[#F5F6FA]"
+                  ? 'bg-[#F5F6FA] font-semibold text-gray-900'
+                  : 'text-gray-600 hover:bg-[#F5F6FA]'
               }`}
             >
               {/* Dot + Name */}
@@ -111,7 +121,8 @@ export default function Sidebar() {
             Thoughts Time
           </div>
           <div className="text-[11px] text-gray-400 leading-tight mb-3">
-            We don’t have any notice for you,<br />
+            We don’t have any notice for you,
+            <br />
             till then you can share your thoughts with your peers.
           </div>
           <button className="bg-white border border-gray-200 rounded-lg px-3 py-1 text-xs font-semibold hover:bg-gray-50">

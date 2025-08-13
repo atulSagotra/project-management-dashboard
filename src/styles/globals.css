@@ -1,8 +1,12 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #F7F7FA;
-  color: #22223B;
+  background: #f7f7fa;
+  color: #22223b;
 }
-::-webkit-scrollbar { width: 4px; height: 4px; background: transparent; }
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  background: transparent;
+}

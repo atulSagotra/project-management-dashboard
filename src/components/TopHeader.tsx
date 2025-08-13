@@ -1,6 +1,12 @@
-import { FaRegCalendarAlt, FaRegBell, FaRegQuestionCircle, FaUserFriends, FaSearch } from "react-icons/fa";
-import { MdKeyboardArrowDown } from "react-icons/md";
-import Image from "next/image";
+import {
+  FaRegCalendarAlt,
+  FaRegBell,
+  FaRegQuestionCircle,
+  FaUserFriends,
+  FaSearch,
+} from 'react-icons/fa';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import Image from 'next/image';
 
 export default function TopHeader() {
   return (
@@ -33,8 +39,12 @@ export default function TopHeader() {
         {/* User info */}
         <div className="flex items-center gap-2 ml-2">
           <div className="hidden sm:flex flex-col items-end leading-none mr-1">
-            <span className="font-semibold text-sm whitespace-nowrap">Anima Agrawal</span>
-            <span className="text-xs text-gray-400 font-normal whitespace-nowrap">U.P, India</span>
+            <span className="font-semibold text-sm whitespace-nowrap">
+              Anima Agrawal
+            </span>
+            <span className="text-xs text-gray-400 font-normal whitespace-nowrap">
+              U.P, India
+            </span>
           </div>
           <span className="w-8 h-8 rounded-full overflow-hidden border border-gray-100 flex items-center justify-center">
             <Image
@@ -47,10 +57,6 @@ export default function TopHeader() {
           </span>
           <MdKeyboardArrowDown size={22} className="text-gray-400" />
         </div>
-        {/* Team/collaborator icon (far right, matching image) */}
-        <span className="ml-2 text-primary bg-primary/10 rounded-full p-2 flex items-center justify-center">
-          <FaUserFriends size={18} />
-        </span>
       </div>
     </header>
   );
