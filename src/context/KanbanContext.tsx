@@ -4,7 +4,7 @@ export type Task = {
   id: string;
   title: string;
   description: string;
-  priority: 'High' | 'Low';
+  priority: String;
 };
 
 export type Lane = {
@@ -25,7 +25,7 @@ type KanbanContextType = {
     laneId: string,
     title: string,
     description?: string,
-    priority?: 'High' | 'Low'
+    priority?: string
   ) => void;
 };
 
@@ -73,24 +73,24 @@ export const KanbanProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const addTask = (
-    laneId: string,
-    title: string,
-    description = '',
-    priority: 'High' | 'Low' = 'Low'
-  ) => {
-    setLanes((prev) => {
-      const copy = JSON.parse(JSON.stringify(prev)) as Lane[];
-      const lane = copy.find((l) => l.id === laneId);
-      if (!lane) return prev;
-      lane.tasks.push({
-        id: `task-${Date.now()}`,
-        title,
-        description,
-        priority,
+      laneId: string,
+      title: string,
+      description: string = '',
+      priority?: string
+    ) => {
+      setLanes((prev) => {
+        const copy = JSON.parse(JSON.stringify(prev)) as Lane[];
+        const lane = copy.find((l) => l.id === laneId);
+        if (!lane) return prev;
+        lane.tasks.push({
+          id: `task-${Date.now()}`,
+          title,
+          description,
+          priority: priority ?? 'Low',
+        });
+        return copy;
       });
-      return copy;
-    });
-  };
+    };
 
   return (
     <KanbanContext.Provider value={{ lanes, moveTask, addTask }}>

@@ -1,40 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+📋 Project Management Dashboard – Kanban Board
+A modern and responsive Kanban board application built with React, TailwindCSS, and @hello-pangea/dnd 🚀
+Organize your workflow, track progress, and manage tasks easily with smooth drag-and-drop functionality.
 
-## Getting Started
+✨ Features
+🔄 Smooth Drag & Drop – Move and reorder tasks within and across lanes effortlessly with @hello-pangea/dnd
 
-First, run the development server:
+➕ Dynamic Task Creation – Add new tasks with a title and description directly from the board
 
-```bash
+📱 Responsive Design – Built with TailwindCSS for a clean, mobile-friendly UI
+
+🎯 Task Priorities – Color-coded priority tags for clear visual cues
+
+🗂 Global State Management – React Context API ensures consistent lane & task data everywhere
+
+🖥 Full-Width Layout – Optimized to take advantage of available screen space
+
+🛠 Tech Stack
+⚛ React (Hooks & Functional Components)
+
+🎨 TailwindCSS (Utility-first styling)
+
+📦 @hello-pangea/dnd (Drag & Drop)
+
+🎭 React Icons (Icons and UI embellishments)
+
+🌐 Next.js (optional integration)
+
+📦 Installation
+bash
+
+# 1️⃣ Clone repo
+
+git clone https://github.com/yourusername/project-management-dashboard.git
+cd project-management-dashboard
+
+# 2️⃣ Install dependencies
+
+npm install
+
+# or
+
+yarn install
+
+# 3️⃣ Start development server
+
 npm run dev
+
 # or
+
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 4️⃣ Open in browser
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+http://localhost:3000
+📂 Project Structure
+text
+src/
+├── components/
+│ ├── KanbanBoard.tsx # Main board with drag-and-drop context
+│ ├── Lane.tsx # Individual lane (column)
+│ ├── TaskCard.tsx # Draggable task card
+├── context/
+│ ├── KanbanContext.tsx # State management (lanes & tasks)
+└── pages/
+└── index.tsx # Entry point with layout components
+🎮 How to Use
+Drag and Drop: Move any task card between lanes or reorder within a lane
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Add a Task: Click the ➕ button in the "To Do" lane
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+Visual Cues: Priority tags make it simple to spot high-priority items
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🎨 Customization Ideas
+🗓 Add deadlines, assigned user avatars, or tags
 
-## Learn More
+🎨 Theme the board by editing tailwind.config.js
 
-To learn more about Next.js, take a look at the following resources:
+📡 Integrate with a backend API for data persistence
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+🧩 Replace prompts with a modal form for better UX
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🐞 Troubleshooting
+Ensure unique task IDs for proper drag behavior
 
-## Deploy on Vercel
+Use a Node.js version compatible with dependencies
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Avoid mutating state directly—always update immutably
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+📜 License
+MIT License © Atul Sagotra

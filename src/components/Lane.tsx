@@ -40,7 +40,8 @@ export default function Lane({ lane }: { lane: LaneType }) {
               const title = prompt('Enter task title');
               if (!title) return;
               const desc = prompt('Enter task description') || '';
-              addTask(lane.id, title, desc, 'Low');
+              const priority = prompt('Enter task Priority') || '';
+              addTask(lane.id, title, desc, priority);
             }}
           >
             <Image
