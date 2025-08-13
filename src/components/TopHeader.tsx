@@ -28,27 +28,45 @@ export default function TopHeader() {
       {/* Right: Icon row, user info, far right team icon */}
       <div className="flex items-center gap-2 sm:gap-3 min-w-fit ml-3">
         <HeaderIconBtn>
-          <FaRegCalendarAlt size={18} />
+          <Image
+            src="/calendar.svg"
+            alt="Profile avatar"
+            width={24}
+            height={24}
+            className="object-cover"
+          />
         </HeaderIconBtn>
         <HeaderIconBtn>
-          <FaRegQuestionCircle size={18} />
+          <Image
+            src="/question.svg"
+            alt="Profile avatar"
+            width={24}
+            height={24}
+            className="object-cover"
+          />
         </HeaderIconBtn>
         <HeaderIconBtn>
-          <FaRegBell size={18} />
+          <Image
+            src="/notification.svg"
+            alt="Profile avatar"
+            width={24}
+            height={24}
+            className="object-cover"
+          />
         </HeaderIconBtn>
         {/* User info */}
         <div className="flex items-center gap-2 ml-2">
           <div className="hidden sm:flex flex-col items-end leading-none mr-1">
             <span className="font-semibold text-sm whitespace-nowrap">
-              Anima Agrawal
+              Atul Sagotra
             </span>
             <span className="text-xs text-gray-400 font-normal whitespace-nowrap">
-              U.P, India
+              Jammu, India
             </span>
           </div>
           <span className="w-8 h-8 rounded-full overflow-hidden border border-gray-100 flex items-center justify-center">
             <Image
-              src="/avatar1.png"
+              src="/profile_pic.png"
               alt="Profile avatar"
               width={32}
               height={32}
@@ -65,7 +83,7 @@ export default function TopHeader() {
 // Header icon button utility
 function HeaderIconBtn({ children }: { children: React.ReactNode }) {
   return (
-    <button className="w-9 h-9 rounded-full flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition text-gray-500">
+    <button className="w-9 h-9 flex items-center justify-center hover:bg-gray-200 transition text-gray-500">
       {children}
     </button>
   );

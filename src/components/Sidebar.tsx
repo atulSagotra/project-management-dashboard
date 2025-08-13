@@ -27,24 +27,28 @@ const projects = [
 
 export default function Sidebar() {
   return (
-    <aside className="w-72 min-w-[260px] max-w-xs bg-white h-screen flex flex-col border-r border-gray-200">
+    <aside className="w-72 min-w-[260px] max-w-xs bg-white flex flex-col border-r border-gray-200">
       {/* Brand row (avatar + Project M. + collaborators icon, all in a row) */}
-      <div className="flex items-center justify-between px-6 py-6 pb-1 shadow-sm">
+      <div className="flex items-center justify-between px-6 py-6 pb-3 shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full overflow-hidden border border-gray-200">
+          <div>
             <Image
-              src="/avatar1.png"
-              width={36}
-              height={36}
+              src="/project_logo.svg"
+              width={24}
+              height={24}
               alt="brand-avatar"
               className="object-cover"
             />
           </div>
           <span className="font-bold text-lg">Project M.</span>
         </div>
-        <button className="bg-[#F5F6FA] hover:bg-[#635DFF]/10 border border-[#D8D2FF] text-primary rounded-full w-8 h-8 flex items-center justify-center transition">
-          <FaUserFriends size={16} />
-        </button>
+        <Image
+          src="/project_arrow.svg"
+          width={26}
+          height={20}
+          alt="brand-avatar"
+          className="object-cover"
+        />
       </div>
 
       {/* NAVIGATION */}

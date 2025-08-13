@@ -19,13 +19,13 @@ type KanbanContextType = {
     srcLaneId: string,
     destLaneId: string,
     srcIdx: number,
-    destIdx: number,
+    destIdx: number
   ) => void;
   addTask: (
     laneId: string,
     title: string,
     description?: string,
-    priority?: 'High' | 'Low',
+    priority?: 'High' | 'Low'
   ) => void;
 };
 
@@ -34,42 +34,22 @@ const initialLanes: Lane[] = [
     id: 'todo',
     title: 'To Do',
     tasks: [
-      {
-        id: 'task-1',
-        title: 'Brainstorming',
-        description: 'Ideation with team',
-        priority: 'Low',
-      },
-      {
-        id: 'task-2',
-        title: 'Research',
-        description: 'User research for new project',
-        priority: 'High',
-      },
+      { id: 'task-1', title: 'Brainstorming', description: 'Ideation with team', priority: 'Low' },
+      { id: 'task-2', title: 'Research', description: 'User research', priority: 'High' },
     ],
   },
   {
     id: 'progress',
     title: 'On Progress',
     tasks: [
-      {
-        id: 'task-3',
-        title: 'UI Mockups',
-        description: 'Design screens in Figma',
-        priority: 'Low',
-      },
+      { id: 'task-3', title: 'UI Mockups', description: 'Design screens in Figma', priority: 'Low' },
     ],
   },
   {
     id: 'done',
     title: 'Done',
     tasks: [
-      {
-        id: 'task-4',
-        title: 'Wireframes',
-        description: 'Basic wireframe completed',
-        priority: 'Low',
-      },
+      { id: 'task-4', title: 'Wireframes', description: 'Basic wireframe completed', priority: 'Low' },
     ],
   },
 ];
@@ -79,17 +59,13 @@ const KanbanContext = createContext<KanbanContextType | undefined>(undefined);
 export const KanbanProvider = ({ children }: { children: ReactNode }) => {
   const [lanes, setLanes] = useState<Lane[]>(initialLanes);
 
-  const moveTask = (
-    srcLaneId: string,
-    destLaneId: string,
-    srcIdx: number,
-    destIdx: number,
-  ) => {
+  const moveTask = (srcLaneId: string, destLaneId: string, srcIdx: number, destIdx: number) => {
     setLanes((prev) => {
       const copy = JSON.parse(JSON.stringify(prev)) as Lane[];
       const srcLane = copy.find((l) => l.id === srcLaneId);
       const destLane = copy.find((l) => l.id === destLaneId);
       if (!srcLane || !destLane) return prev;
+
       const [moved] = srcLane.tasks.splice(srcIdx, 1);
       destLane.tasks.splice(destIdx, 0, moved);
       return copy;
@@ -100,16 +76,18 @@ export const KanbanProvider = ({ children }: { children: ReactNode }) => {
     laneId: string,
     title: string,
     description = '',
-    subheading = '',
-    priority: 'High' | 'Low' = 'Low',
+    priority: 'High' | 'Low' = 'Low'
   ) => {
     setLanes((prev) => {
       const copy = JSON.parse(JSON.stringify(prev)) as Lane[];
       const lane = copy.find((l) => l.id === laneId);
       if (!lane) return prev;
-      const newTaskId = `task-${Date.now()}`;
-      const newTask: Task = { id: newTaskId, title, description, priority };
-      lane.tasks.push(newTask);
+      lane.tasks.push({
+        id: `task-${Date.now()}`,
+        title,
+        description,
+        priority,
+      });
       return copy;
     });
   };

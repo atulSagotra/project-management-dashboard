@@ -1,9 +1,9 @@
-import { Draggable } from 'react-beautiful-dnd';
+import { Draggable } from '@hello-pangea/dnd';
 import { Task } from '../context/KanbanContext';
 import { FaCommentAlt, FaPaperclip } from 'react-icons/fa';
 import Image from 'next/image';
 
-const avatars = ['/avatar1.png', '/avatar2.png'];
+const avatars = ['/avatar1.svg', '/avatar2.svg'];
 
 export default function TaskCard({
   task,
@@ -36,10 +36,15 @@ export default function TaskCard({
             </span>
           </div>
 
-          <h3 className="font-semibold text-base text-[#0D062D] mb-1">
+          {/* Title */}
+          <h3 className="font-semibold text-base text-[#0D062D]">
             {task.title}
           </h3>
-          <p className="text-sm text-[#787486] mb-4">{task.description}</p>
+
+          {/* Description */}
+          {task.description && (
+            <p className="text-sm text-[#787486] mb-4">{task.description}</p>
+          )}
 
           {/* Footer */}
           <div className="flex items-center justify-between mt-1">
@@ -55,12 +60,26 @@ export default function TaskCard({
                 />
               ))}
             </div>
-            <div className="flex gap-3 text-xs text-[#787486] items-center">
+            <div className="flex gap-3 text-xs/8 text-[#787486] items-center">
               <span className="inline-flex items-center gap-1">
-                <FaCommentAlt className="text-[13px]" /> 12
+                <Image
+                  src="/message.svg"
+                  width={24}
+                  height={24}
+                  alt=""
+                  className="rounded-full border-2 border-white"
+                />{' '}
+                12 comments
               </span>
               <span className="inline-flex items-center gap-1">
-                <FaPaperclip className="text-[13px]" /> 0
+                <Image
+                  src="/message.svg"
+                  width={24}
+                  height={24}
+                  alt=""
+                  className="rounded-full border-2 border-white"
+                />{' '}
+                3 files
               </span>
             </div>
           </div>

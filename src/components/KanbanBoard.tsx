@@ -1,4 +1,4 @@
-import { DragDropContext, DropResult } from 'react-beautiful-dnd';
+import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 import { useKanban } from '../context/KanbanContext';
 import Lane from './Lane';
 
@@ -11,7 +11,7 @@ export default function KanbanBoard() {
       result.source.droppableId,
       result.destination.droppableId,
       result.source.index,
-      result.destination.index,
+      result.destination.index
     );
   };
 

@@ -1,8 +1,8 @@
 const avatars = [
-  '/avatar1.png',
-  '/avatar2.png',
-  '/avatar3.png',
-  '/avatar4.png',
+  '/avatar1.svg',
+  '/avatar2.svg',
+  '/avatar3.svg',
+  '/avatar4.svg',
 ];
 
 export default function AvatarGroup() {
@@ -13,10 +13,10 @@ export default function AvatarGroup() {
           key={i}
           src={src}
           alt=""
-          className="w-8 h-8 rounded-full border-2 border-white shadow"
+          className="w-8 h-8 rounded-full border-1 border-white shadow"
         />
       ))}
-      <span className="w-8 h-8 bg-primary text-white text-xs flex items-center justify-center rounded-full border-2 border-white shadow">
+      <span className="w-8 h-8 bg-[#F4D7DA] text-[#D25B68] text-xs flex items-center justify-center rounded-full border-1 border-white shadow">
         +2
       </span>
     </div>
