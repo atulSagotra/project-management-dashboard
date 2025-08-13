@@ -5,7 +5,7 @@ import { useState } from 'react';
 import TopHeader from '../components/TopHeader';
 
 export default function Home() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   return (
     <>
