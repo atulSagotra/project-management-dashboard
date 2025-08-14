@@ -29,6 +29,11 @@ Organize your workflow, track progress, and manage tasks easily with smooth drag
 📦 Installation
 bash
 
+## Screen Shots
+![alt text](<Screenshot 2025-08-13 213902.png>)
+![alt text](<Screenshot 2025-08-13 213957.png>)
+![alt text](<Screenshot 2025-08-13 214031.png>)
+
 # 1️⃣ Clone repo
 
 git clone https://github.com/yourusername/project-management-dashboard.git
